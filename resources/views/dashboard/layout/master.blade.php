@@ -171,7 +171,7 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" navigation-header"><span>Apps</span>
             </li>
-            <li class=" nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Email</span></a>
+            <li class=" nav-item"><a href="{{ route('categories.index') }}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Категории</span></a>
             </li>
             <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Chat</span></a>
             </li>

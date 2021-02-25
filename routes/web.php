@@ -18,8 +18,12 @@ Auth::routes();
 
 Route::get('/', 'MainController@index')->name('index');
 
-Route::group(['namespace' => 'Admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::group(['middleware' => 'is_admin'], function () {
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+        Route::resource('categories', 'CategoryController');
     });
 });
+
+Route::get('/categories', 'MainController@categories')->name('categories');
