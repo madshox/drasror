@@ -1,0 +1,30 @@
+@font-face {
+	font-family: "FuturaMediumC"; 
+	src: url("../fonts/Futura/FuturaMediumC.eot"); 
+	src: url("../fonts/Futura/FuturaMediumC.eot?#iefix") format("embedded-opentype"),
+	url("../fonts/Futura/FuturaMediumC.woff") format("woff"), 
+	url("../fonts/Futura/FuturaMediumC.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal; 
+} 
+
+@font-face {
+	font-family: "FuturaDemiC"; 
+	src: url("../fonts/Futura/FuturaDemiC.eot"); 
+	src: url("../fonts/Futura/FuturaDemiC.eot?#iefix") format("embedded-opentype"),
+	url("../fonts/Futura/FuturaDemiC.woff") format("woff"), 
+	url("../fonts/Futura/FuturaDemiC.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal; 
+} 
+
+
+@font-face {
+	font-family: "FuturaBookC"; 
+	src: url("../fonts/Futura/FuturaBookC.eot"); 
+	src: url("../fonts/Futura/FuturaBookC.eot?#iefix") format("embedded-opentype"),
+	url("../fonts/Futura/FuturaBookC.woff") format("woff"), 
+	url("../fonts/Futura/FuturaBookC.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal; 
+} 
