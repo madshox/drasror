@@ -11,7 +11,7 @@
     <meta name="keywords"
           content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard</title>
+    <title>@yield('title')</title>
     <link rel="apple-touch-icon" href="{{ asset('back/app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('back/app-assets/images/ico/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css"
           href="{{ asset('back/app-assets/vendors/css/extensions/tether-theme-arrows.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/vendors/css/extensions/tether.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/vendors/css/file-uploaders/dropzone.min.css') }}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -39,11 +40,21 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/pages/dashboard-analytics.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/pages/card-analytics.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/plugins/tour/tour.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/plugins/file-uploaders/dropzone.css') }}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('back/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
+
+    <!--Ck-editor-->
+    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+    <!--End-Ck-editor-->
+
+{{--    <!--Dropzone-->--}}
+{{--    <link href="{{ asset('dropzone/dropzone.css') }}" type="text/css" rel="stylesheet"/>--}}
+{{--    <script src="{{ asset('dropzone/dropzone.js') }}"></script>--}}
+{{--    <!--End-dropzone-->--}}
 
 </head>
 <!-- END: Head-->
@@ -226,8 +237,8 @@
             <li class=" nav-item"><a href="{{ route('categories.index') }}"><i class="feather icon-mail"></i><span
                         class="menu-title" data-i18n="Email">Категории</span></a>
             </li>
-            <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span
-                        class="menu-title" data-i18n="Chat">Chat</span></a>
+            <li class=" nav-item"><a href="{{ route('services.index') }}"><i class="feather icon-message-square"></i><span
+                        class="menu-title" data-i18n="Chat">Услуги</span></a>
             </li>
             <li class=" nav-item"><a href="app-todo.html"><i class="feather icon-check-square"></i><span
                         class="menu-title" data-i18n="Todo">Todo</span></a>
@@ -397,6 +408,23 @@
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 
+<!--Ck-editor-->
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ), {
+            items: [ 'bold', 'italic', '|', 'undo', 'redo', '-', 'numberedList', 'bulletedList' ],
+            viewportTopOffset: 30,
+            shouldNotGroupWhenFull: true,
+            heading: {
+                options: [
+                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+                ]
+            }
+        } )
+</script>
+<!--End-Ck-editor-->
 
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('back/app-assets/vendors/js/vendors.min.js') }}"></script>
@@ -405,6 +433,7 @@
 <!-- BEGIN: Page Vendor JS-->
 <script src="{{ asset('back/app-assets/vendors/js/charts/apexcharts.min.js') }}"></script>
 <script src="{{ asset('back/app-assets/vendors/js/extensions/tether.min.js') }}"></script>
+<script src="{{ asset('back/app-assets/vendors/js/extensions/dropzone.min.js') }}"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
@@ -415,6 +444,7 @@
 
 <!-- BEGIN: Page JS-->
 <script src="{{ asset('back/app-assets/js/scripts/pages/dashboard-analytics.js') }}"></script>
+<script src="{{ asset('back/app-assets/js/scripts/extensions/dropzone.js') }}"></script>
 <!-- END: Page JS-->
 
 </body>

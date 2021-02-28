@@ -1,5 +1,130 @@
 @extends('layouts.master')
 
+@section('swiper')
+    <!-- Swiper -->
+    <div class="swiper-container front_slider">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide front_slide">
+
+                <div class="container h-100 position-relative">
+                    <div class="row d-flex align-items-center h-100">
+                        <div class="col-md-6 z2 res_text_center  pt-5">
+                            <h1 class="title">
+                                Пластическая хирургия
+                            </h1> <!-- title -->
+                            <h3 class="subtitle2">
+                                Быть красивой просто!
+                            </h3> <!-- subtitle -->
+                            <div class="header_btn">
+                                <a href="#" class="mybtn" data-toggle="modal" data-target="#exampleModalCenter">Записаться
+                                    на прием</a>
+
+                            </div> <!-- header_btn -->
+
+                        </div> <!-- col-md-6 -->
+
+                        <div class="col-md-6 z2 res-dnone myd-flex justify-content-end align-items-end h-100">
+
+                            <div class="soc_blocks">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit"><img src="{{ asset('front/images/facebook.png') }}" alt=""></button>
+                                </form>
+                                <a href="#"><img src="{{ asset('front/images/instagram.png') }}" alt=""></a>
+                                <a href="#"><img src="{{ asset('front/images/youtube.png') }}" alt=""></a>
+                            </div> <!-- soc_blocks -->
+                        </div> <!-- col-md-6 -->
+                    </div> <!-- row -->
+
+                    <img src="{{ asset('front/images/slide1_img.png') }}" class="first_img res-dnone" alt="">
+                </div> <!-- container -->
+
+            </div> <!-- swiper-slide -->
+
+            <div class="swiper-slide front_slide">
+                <div class="container h-100 position-relative">
+                    <div class="row d-flex align-items-center h-100">
+                        <div class="col-md-6 pt-5 res_text_center z2">
+                            <h1 class="title">
+                                Готовы взглянуть на себя по новому?
+                            </h1> <!-- title -->
+                            <p class="subtitle">
+                                Уже более 18 лет доктор Юнусов проводит процедуры, <br class="res-dnone">
+                                помогующие вам выглядеть обновленной и привлекательной <br class="res-dnone">
+                                уже сегодня!
+                            </p> <!-- subtitle -->
+                            <div class="header_btn">
+                                <a href="#" class="mybtn" data-toggle="modal" data-target="#exampleModalCenter">Записаться
+                                    на прием</a>
+                            </div> <!-- header_btn -->
+
+                        </div> <!-- col-md-6 -->
+
+                        <div class="col-md-6 res-dnone myd-flex justify-content-end">
+
+                            <div class="soc_blocks">
+                                <a href="#"><img src="{{ asset('front/images/facebook.png') }}" alt=""></a>
+                                <a href="#"><img src="{{ asset('front/images/instagram.png') }}" alt=""></a>
+                                <a href="#"><img src="{{ asset('front/images/youtube.png') }}" alt=""></a>
+                            </div> <!-- soc_blocks -->
+                        </div> <!-- col-md-6 -->
+                    </div> <!-- row -->
+
+                    <img src="{{ asset('front/images/slide2_img.png') }}" class="header_imgs  res-dnone" alt="">
+                </div> <!-- container -->
+
+            </div> <!-- swiper-slide -->
+
+            <div class="swiper-slide front_slide">
+                <div class="container h-100 position-relative">
+                    <div class="row d-flex align-items-center h-100">
+                        <div class="col-md-5 z2 res_text_center pt-5">
+                            <div class="mybox">
+
+                                <h2 class="section_title mybox_title">
+                                    Записаться на прием
+                                </h2> <!-- section_title -->
+
+                                <form action="" class="mybox_form">
+                                    <input type="text" required="" placeholder="Введите ваше имя">
+                                    <input type="text" required="" placeholder="Введите ваш номер телефона">
+                                    <input type="text" required="" placeholder="Введите ваш e-mail">
+                                    <div class="text-center mt-4">
+                                        <button type="submit" class="mybtn px-6">Отправить</button>
+                                    </div>
+
+                                </form> <!-- mybox_form -->
+
+                            </div> <!-- mybox -->
+
+                        </div> <!-- col-md-5 -->
+                        <div class="col-md-1">
+
+                        </div>
+
+                        <div class="col-md-6 z2 res-dnone myd-flex justify-content-end">
+
+                            <div class="soc_blocks">
+                                <a href="#"><img src="{{ asset('front/images/facebook.png') }}" alt=""></a>
+                                <a href="#"><img src="{{ asset('front/images/instagram.png') }}" alt=""></a>
+                                <a href="#"><img src="{{ asset('front/images/youtube.png') }}" alt=""></a>
+                            </div> <!-- soc_blocks -->
+                        </div> <!-- col-md-6 -->
+                    </div> <!-- row -->
+
+                    <img src="{{ asset('front/images/slide3_img.png') }}" class="header_imgs  res-dnone" alt="">
+                </div> <!-- container -->
+
+            </div> <!-- swiper-slide -->
+
+
+        </div> <!-- swiper-wrapper -->
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+@endsection
+
 @section('content')
 <section id="section01" class="section">
     <div class="container">

@@ -17,13 +17,15 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'MainController@index')->name('index');
+Route::get('/categories', 'MainController@categories')->name('categories');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::group(['middleware' => 'is_admin'], function () {
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
         Route::resource('categories', 'CategoryController');
+        Route::resource('services', 'ServiceController');
     });
 });
 
-Route::get('/categories', 'MainController@categories')->name('categories');
+Route::get('/{slug}', 'MainController@category')->name('category');
