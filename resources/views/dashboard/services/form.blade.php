@@ -78,26 +78,7 @@
                                             </div>
 
                                             {{--Multiple image--}}
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                            <h4 class="card-title">Remove Thumbnail</h4>
-                                                        </div>
-                                                        <div class="card-content">
-                                                            <div class="card-body">
-                                                                <p class="card-text">This example allows user to remove any file out of all uploaded files. This will add a
-                                                                    link to every file preview to remove or cancel (if already uploading) the file. The
-                                                                    <code>dictCancelUpload</code>, <code>dictCancelUploadConfirmation</code> and <code>dictRemoveFile</code>
-                                                                    options are used for the wording.</p>
-                                                                <form action="#" class="dropzone dropzone-area dz-clickable" id="dpz-remove-thumb">
-                                                                    <div class="dz-message">Drop Files Here To Upload</div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="input-images col-12"></div>
                                             <!--End-multiple-image-->
 
                                             <div class="card-body">

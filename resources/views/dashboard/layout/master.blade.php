@@ -22,7 +22,6 @@
     <link rel="stylesheet" type="text/css"
           href="{{ asset('back/app-assets/vendors/css/extensions/tether-theme-arrows.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/vendors/css/extensions/tether.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/vendors/css/file-uploaders/dropzone.min.css') }}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -40,7 +39,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/pages/dashboard-analytics.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/pages/card-analytics.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/plugins/tour/tour.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/plugins/file-uploaders/dropzone.css') }}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -51,10 +49,15 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
     <!--End-Ck-editor-->
 
-{{--    <!--Dropzone-->--}}
-{{--    <link href="{{ asset('dropzone/dropzone.css') }}" type="text/css" rel="stylesheet"/>--}}
-{{--    <script src="{{ asset('dropzone/dropzone.js') }}"></script>--}}
-{{--    <!--End-dropzone-->--}}
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--Material Design Iconic Font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Image Uploader CSS -->
+    <link rel="stylesheet" href="{{ asset('jquery-image-uploader/dist/image-uploader.min.css') }}">
+    <!-- Image Uploader Js -->
+    <script type="text/javascript" src="{{ asset('jquery-image-uploader/dist/image-uploader.min.js') }}"></script>
 
 </head>
 <!-- END: Head-->
@@ -426,6 +429,10 @@
 </script>
 <!--End-Ck-editor-->
 
+<script>
+    $('.input-images').imageUploader();
+</script>
+
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('back/app-assets/vendors/js/vendors.min.js') }}"></script>
 <!-- BEGIN Vendor JS-->
@@ -433,7 +440,6 @@
 <!-- BEGIN: Page Vendor JS-->
 <script src="{{ asset('back/app-assets/vendors/js/charts/apexcharts.min.js') }}"></script>
 <script src="{{ asset('back/app-assets/vendors/js/extensions/tether.min.js') }}"></script>
-<script src="{{ asset('back/app-assets/vendors/js/extensions/dropzone.min.js') }}"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
@@ -444,7 +450,6 @@
 
 <!-- BEGIN: Page JS-->
 <script src="{{ asset('back/app-assets/js/scripts/pages/dashboard-analytics.js') }}"></script>
-<script src="{{ asset('back/app-assets/js/scripts/extensions/dropzone.js') }}"></script>
 <!-- END: Page JS-->
 
 </body>

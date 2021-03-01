@@ -18,7 +18,7 @@
                                         <tr>
                                             <th scope="col">ID</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Icon</th>
+                                            <th scope="col">Image</th>
                                             <th scope="col" style="text-align: center;">Действия</th>
                                         </tr>
                                         </thead>
@@ -26,8 +26,8 @@
                                         @foreach($services as $service)
                                             <tr>
                                                 <th scope="row">{{ $service->id }}</th>
-                                                <td>{{ $service->name }}</td>
-                                                <td><img src="{{ Storage::url($service->icon) }}" height="auto" width="150" alt=""></td>
+                                                <td>{{ $service->title }}</td>
+                                                <td><img src="{{ Storage::url($service->head_image) }}" height="auto" width="150" alt=""></td>
                                                 <td style="display: flex; justify-content: center;">
                                                     <form action="{{ route('services.destroy', $service) }}" method="POST">
                                                         <a href="{{ route('services.edit', $service) }}"><button type="button" class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light">

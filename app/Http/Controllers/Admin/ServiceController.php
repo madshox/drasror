@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -38,7 +39,25 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $head_image = $request->file('head_image');
+        $head_image_name = time(). '-' . $head_image->getClientOriginalName();
+
+        $path = $request->file('head_image')->storeAs('service_head_image', $head_image_name);
+        $params = $request->all();
+        $params['head_image'] = $path;
+        $service = Service::create($params);
+
+        if($request->hasFile('images')) {
+            $files = $request->file('images');
+            foreach ($files as $file) {
+                $name = time(). '-' . $file->getClientOriginalName();
+                $name = str_replace(' ', '-', $name);
+
+                $file->move('storage/images', $name);
+                $service->images()->create(['image' => 'images' . '/' . $name]);
+            }
+        }
+        return redirect()->route('services.index')->with('success', 'Услуга успешно добавлена');
     }
 
     /**
@@ -60,7 +79,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+
     }
 
     /**
@@ -83,6 +102,11 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        foreach ($service->images as $image) {
+            Storage::delete($image['image']);
+        }
+        Storage::delete($service->head_image);
+        $service->delete();
+        return redirect()->route('services.index')->with('danger', 'Услуга успешно удалена');
     }
 }
