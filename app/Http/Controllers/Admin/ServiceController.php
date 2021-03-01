@@ -79,7 +79,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-
+        $services = Service::all();
+        return view('dashboard.services.form', compact('services'));
     }
 
     /**
@@ -91,7 +92,16 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        if ($request->hasFile('head_image')) {
+            Storage::delete($service->head_image);
+            $path = $request->file('icon')->store('services');
+        } else {
+            $path = $service->head_image;
+        }
+        $params = $request->all();
+        $params['icon'] = $path;
+        $service->update($params);
+        return redirect()->route('services.index')->with('warning', 'Услуга успешно отредактирована');
     }
 
     /**

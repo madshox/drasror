@@ -430,7 +430,16 @@
 <!--End-Ck-editor-->
 
 <script>
-    $('.input-images').imageUploader();
+    // $('.input-images').imageUploader();
+
+    $('.input-images').imageUploader({
+        preloaded: [
+            {
+                <?php foreach ($services as $image) { ?>
+                    id: 1, src: 'https://picsum.photos/500/500?random=1'},
+                <?php } ?>
+        ]
+    });
 </script>
 
 <!-- BEGIN: Vendor JS-->

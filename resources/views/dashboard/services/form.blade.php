@@ -1,7 +1,7 @@
 @extends('dashboard.layout.master')
 
 @isset($service)
-    @section('title', 'Редактировать услугу ' . $service->name)
+    @section('title', 'Редактировать услугу ' . $service->title)
 @else
     @section('title', 'Создать услугу')
 @endisset
