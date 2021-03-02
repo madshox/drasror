@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $services = Service::all();
-        View::share('services', $services);
+//        $services = Service::all();
+//        View::share('services', $services);
     }
 }

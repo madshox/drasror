@@ -27,8 +27,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $services = Service::all();
-        return view('dashboard.services.form', compact('services'));
+        return view('dashboard.services.form');
     }
 
     /**
@@ -79,7 +78,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        $services = Service::all();
+        $services = Service::all()->find($service);
         return view('dashboard.services.form', compact('services'));
     }
 
@@ -92,15 +91,41 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
+        foreach ($service->images as $image){
+            if (!collect($request['preloaded'])->contains($image->id)){
+                try {
+                    Storage::delete($image->image);
+                }catch (\Exception $e){}
+                $image->delete();
+            }
+        }
+
+
+        dd($request);
+//        if($request['preloaded']) {
+////            dd($service);
+//            $files = $request->file('images');
+//            foreach ($files as $file) {
+//                $name = time(). '-' . $file->getClientOriginalName();
+//                $name = str_replace(' ', '-', $name);
+//
+//                $file->move('storage/images', $name);
+//                $service->images()->update(['image' => 'images' . '/' . $name]);
+//            }
+//        }
+
         if ($request->hasFile('head_image')) {
             Storage::delete($service->head_image);
-            $path = $request->file('icon')->store('services');
+            $head_image = $request->file('head_image');
+            $head_image_name = time(). '-' . $head_image->getClientOriginalName();
+            $path = $request->file('head_image')->storeAs('service_head_image', $head_image_name);
         } else {
             $path = $service->head_image;
         }
         $params = $request->all();
-        $params['icon'] = $path;
+        $params['head_image'] = $path;
         $service->update($params);
+
         return redirect()->route('services.index')->with('warning', 'Услуга успешно отредактирована');
     }
 

@@ -1,7 +1,7 @@
 @extends('dashboard.layout.master')
-
-@isset($service)
-    @section('title', 'Редактировать услугу ' . $service->title)
+{{--@dd($services)--}}
+@isset($services)
+    @section('title', 'Редактировать услугу ' . $services['title'])
 @else
     @section('title', 'Создать услугу')
 @endisset
@@ -13,23 +13,22 @@
                     <div class="col-12">
                         <div class="card" style="">
                             <div class="card-header">
-                                @isset($service)
+                                @isset($services)
                                     <h4 class="card-title">Редактировать услугу</h4>
                                 @else
                                     <h4 class="card-title">Создать услугу</h4>
                                 @endisset
                             </div>
                             <form id="form" method="POST" enctype="multipart/form-data"
-                                  @isset($service)
-                                  action="{{ route('services.update', $service) }}"
+                                  @isset($services)
+                                  action="{{ route('services.update', $services['id']) }}"
                                   @else
                                   action="{{ route('services.store') }}"
                                 @endisset>
 
-                                @isset($service)
+                                @isset($services)
                                     @method('PUT')
                                 @endisset
-
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="row">
@@ -44,22 +43,22 @@
                                                     class="form-group position-relative has-icon-left input-divider-left">
                                                         <input type="text" class="form-control" id="name" name="title"
                                                                placeholder="Название услуги"
-                                                               value="{{ old('title', isset($service) ? $service->title : null) }}">
+                                                               value="{{ old('title', isset($services) ? $services['title'] : null) }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-phone"></i>
                                                     </div>
                                                 </fieldset>
                                             </div>
 
-                                            {{--CK-editor--}}
+                                            <!--CK-editor-->
                                             <div class="col-12">
                                                 <div class="text-bold-600 font-medium-2 mb-1">
                                                     Описание
                                                 </div>
                                                 <textarea name="description" id="editor" cols="30" placeholder="Описание услуги"
-                                                    rows="10">{{ old('description', isset($service) ? $service->description : null) }}</textarea>
+                                                    rows="10">{{ old('description', isset($services) ? $services['description'] : null) }}</textarea>
                                             </div>
-                                            {{--end-CK-editor--}}
+                                            <!--end-CK-editor-->
 
                                             <div class="col-12" style="margin-top: 30px">
                                                 <div class="text-bold-600 font-medium-2 mb-1">
@@ -78,7 +77,11 @@
                                             </div>
 
                                             {{--Multiple image--}}
-                                            <div class="input-images col-12"></div>
+                                            @isset($services)
+                                                <div class="input-images-2 col-12"></div>
+                                            @else
+                                                <div class="input-images col-12"></div>
+                                            @endisset
                                             <!--End-multiple-image-->
 
                                             <div class="card-body">
@@ -109,4 +112,17 @@
                     </div>
                 </div>
             </section>
+            <script>
+                $('.input-images').imageUploader();
+
+                <?php if(isset($services)) { ?>
+                $('.input-images-2').imageUploader({
+                    preloaded: [
+                            <?php foreach ($services->images as $image) { ?>
+                        { id: {{ $image->id }}, src: '{{ Storage::url($image->image) }}' },
+                        <?php } ?>
+                    ]
+                });
+                <?php } ?>
+            </script>
 @endsection
