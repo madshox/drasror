@@ -101,18 +101,16 @@ class ServiceController extends Controller
         }
 
 
-        dd($request);
-//        if($request['preloaded']) {
-////            dd($service);
-//            $files = $request->file('images');
-//            foreach ($files as $file) {
-//                $name = time(). '-' . $file->getClientOriginalName();
-//                $name = str_replace(' ', '-', $name);
-//
-//                $file->move('storage/images', $name);
-//                $service->images()->update(['image' => 'images' . '/' . $name]);
-//            }
-//        }
+        if($request->hasFile('images')) {
+            $files = $request->file('images');
+            foreach ($files as $file) {
+                $name = time(). '-' . $file->getClientOriginalName();
+                $name = str_replace(' ', '-', $name);
+
+                $file->move('storage/images', $name);
+                $service->images()->create(['image' => 'images' . '/' . $name]);
+            }
+        }
 
         if ($request->hasFile('head_image')) {
             Storage::delete($service->head_image);
