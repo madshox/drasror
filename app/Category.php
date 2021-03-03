@@ -12,6 +12,10 @@ class Category extends Model
         'id'
     ];
 
+    public function services() {
+        return $this->hasMany(Service::class);
+    }
+
     public function sluggable() {
         return [
             'slug' => [

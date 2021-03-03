@@ -598,8 +598,7 @@ a:hover {
   color: #222;
   font-family: "FuturaBookC";
   padding: 15px 0 10px 0;
-  display: flex;
-  align-items: center;
+  text-align: center;
 }
 
 .line {

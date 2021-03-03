@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServicesTable extends Migration
+class AddCategoryIdToServices extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,8 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
-            $table->id();
+        Schema::table('services', function (Blueprint $table) {
             $table->integer('category_id');
-            $table->string('title');
-            $table->string('slug');
-            $table->string('head_image');
-            $table->text('description');
-            $table->dropColumn('long_d');
-            $table->timestamps();
         });
     }
 
@@ -32,6 +25,8 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::table('services', function (Blueprint $table) {
+            $table->dropColumn('category_id');
+        });
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Service;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -44,6 +45,7 @@ class ServiceController extends Controller
         $path = $request->file('head_image')->storeAs('service_head_image', $head_image_name);
         $params = $request->all();
         $params['head_image'] = $path;
+        $params['slug'] = SlugService::createSlug(Service::class, 'slug', $request->title);
         $service = Service::create($params);
 
         if($request->hasFile('images')) {
@@ -100,19 +102,16 @@ class ServiceController extends Controller
             }
         }
 
+        if($request->hasFile('images')) {
+            $files = $request->file('images');
+            foreach ($files as $file) {
+                $name = time(). '-' . $file->getClientOriginalName();
+                $name = str_replace(' ', '-', $name);
 
-        dd($request);
-//        if($request['preloaded']) {
-////            dd($service);
-//            $files = $request->file('images');
-//            foreach ($files as $file) {
-//                $name = time(). '-' . $file->getClientOriginalName();
-//                $name = str_replace(' ', '-', $name);
-//
-//                $file->move('storage/images', $name);
-//                $service->images()->update(['image' => 'images' . '/' . $name]);
-//            }
-//        }
+                $file->move('storage/images', $name);
+                $service->images()->create(['image' => 'images' . '/' . $name]);
+            }
+        }
 
         if ($request->hasFile('head_image')) {
             Storage::delete($service->head_image);

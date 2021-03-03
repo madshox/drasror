@@ -28,4 +28,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     });
 });
 
+Route::get('/{category}/{service}', 'MainController@service')->name('service');
 Route::get('/{slug}', 'MainController@category')->name('category');

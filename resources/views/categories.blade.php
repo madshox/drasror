@@ -4,9 +4,9 @@
     <div class="container pt-6">
         <h1 class="sections_title">Цены</h1>
         <div class="d-flex mybread_cump align-items-center">
-            <a href="index.html" class="hvr-underline-reveal">Главная</a>
+            <a href="{{ route('index') }}" class="hvr-underline-reveal">Главная</a>
             <i class="fa fa-angle-right"></i>
-            <a href="index.html" class="hvr-underline-reveal">Цены</a>
+            <a href="{{ route('categories') }}" class="hvr-underline-reveal">Услуги</a>
         </div> <!-- d-flex -->
     </div> <!-- contaienr -->
 @endsection
@@ -25,9 +25,9 @@
                             <h4><span class="line"><!-- Empty --></span>
                                 <b>{{ $category->name }}</b>
                             </h4>
-                            <p>
-                                <span>•</span> Врожденные Аномалии
-                            </p>
+                            @foreach($category->services as $service)
+                                <p><span>•</span>{{ $service->title }}</p>
+                            @endforeach
                         </a>
                     </div>
                     <div class="col-md-1">

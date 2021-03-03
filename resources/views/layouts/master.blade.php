@@ -60,16 +60,16 @@
 
             <div id="menu">
                 <div class="d-flex align-items-center">
-                    <a href="#" id="logo">
+                    <a href="{{ route('index') }}" id="logo">
                         <img src="{{ asset('front/images/logo.png') }}" alt="logo" class="img-width main-logo logo-img">
                         <img src="{{ asset('front/images/logo_black.png') }}" alt="logo"
                              class="img-width logo_black logo-img">
                     </a> <!-- #logo -->
                     <ul class="main-ul pl-5">
-                        <li><a href="#section01" class="hvr-underline-reveal anim link">Главная</a></li>
+                        <li><a href="{{ route('index') }}" class="hvr-underline-reveal anim link">Главная</a></li>
                         <li><a href="#section02" class="hvr-underline-reveal anim link">О хирурге</a></li>
                         <li><a href="#section04" class="hvr-underline-reveal anim link">Документы</a></li>
-                        <li><a href="{{ route('categories') }}" class="hvr-underline-reveal anim link">Цены</a></li>
+                        <li><a href="{{ route('categories') }}" class="hvr-underline-reveal anim link">Услуги</a></li>
                         <li><a href="#section00" class="hvr-underline-reveal anim link">Контакты</a></li>
 
                         <!-- Modal -->
@@ -118,7 +118,7 @@
                     <li><a href="#section01" class="hvr-underline-reveal anim link">Главная</a></li>
                     <li><a href="#section02" class="hvr-underline-reveal anim link">О хирурге</a></li>
                     <li><a href="#section04" class="hvr-underline-reveal anim link">Документы</a></li>
-                    <li><a href="#section00" class="hvr-underline-reveal anim link">Цены</a></li>
+                    <li><a href="#section00" class="hvr-underline-reveal anim link">Услуги</a></li>
                     <li><a href="#section00" class="hvr-underline-reveal anim link">Контакты</a></li>
 
                     <!-- Modal -->
