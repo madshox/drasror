@@ -60,6 +60,16 @@
                                             </div>
                                             <!--end-CK-editor-->
 
+                                            <!--CK-editor-->
+                                            <div class="col-12 mt-2">
+                                                <div class="text-bold-600 font-medium-2 mb-1">
+                                                    Длинное описание
+                                                </div>
+                                                <textarea name="long_d" id="editor2" cols="30" placeholder="Длинное описание услуги"
+                                                          rows="10">{{ old('description', isset($services) ? $services['long_d'] : null) }}</textarea>
+                                            </div>
+                                            <!--end-CK-editor-->
+
                                             <div class="col-12" style="margin-top: 30px">
                                                 <div class="text-bold-600 font-medium-2 mb-1">
                                                     Главная картинка
@@ -83,6 +93,21 @@
                                                 <div class="input-images col-12"></div>
                                             @endisset
                                             <!--End-multiple-image-->
+
+                                            <div class="col-12" style="margin-top: 30px">
+                                            <select name="category_id" id="category_id" class="form-control">
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}"
+                                                        @isset($services)
+                                                            @if($services->category_id == $category->id)
+                                                                selected
+                                                            @endif
+                                                        @endisset>
+                                                        {{ $category->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            </div>
 
                                             <div class="card-body">
                                                 <div class="row" style="display: inline-flex">

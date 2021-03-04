@@ -52,7 +52,7 @@
 </head>
 <body>
 
-<header class="sections_header">
+<header class="">
 
     <nav class="main-nav notresponsive-nav">
         <div class="container">

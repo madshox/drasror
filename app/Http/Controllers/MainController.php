@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     public function index() {
-        return view('index');
+        $categories = Category::all();
+        return view('index', compact('categories'));
     }
 
     public function categories() {

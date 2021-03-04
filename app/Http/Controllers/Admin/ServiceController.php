@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Service;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -28,7 +29,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('dashboard.services.form');
+        $categories = Category::all();
+        return view('dashboard.services.form', compact('categories'));
     }
 
     /**
@@ -80,8 +82,9 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
+        $categories = Category::all();
         $services = Service::all()->find($service);
-        return view('dashboard.services.form', compact('services'));
+        return view('dashboard.services.form', compact('services', 'categories'));
     }
 
     /**

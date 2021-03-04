@@ -222,7 +222,7 @@
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('dashboard') }}">
+            <li class="nav-item mr-auto"><a class="navbar-brand" target="_blank" href="{{ route('index') }}">
                     <div class="brand-logo"></div>
                     <h2 class="brand-text mb-0">drAsror</h2>
                 </a></li>
@@ -415,6 +415,22 @@
 <script>
     ClassicEditor
         .create( document.querySelector( '#editor' ), {
+            items: [ 'bold', 'italic', '|', 'undo', 'redo', '-', 'numberedList', 'bulletedList' ],
+            viewportTopOffset: 30,
+            shouldNotGroupWhenFull: true,
+            heading: {
+                options: [
+                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+                ]
+            }
+        } )
+</script>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor2' ), {
             items: [ 'bold', 'italic', '|', 'undo', 'redo', '-', 'numberedList', 'bulletedList' ],
             viewportTopOffset: 30,
             shouldNotGroupWhenFull: true,
