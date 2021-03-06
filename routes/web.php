@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+//pages
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/categories', 'MainController@categories')->name('categories');
+Route::get('/about', 'MainController@about')->name('about');
+Route::get('/document', 'MainController@document')->name('document');
+Route::get('/contact', 'MainController@contact')->name('contact');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::group(['middleware' => 'is_admin'], function () {
@@ -27,6 +31,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::resource('services', 'ServiceController');
     });
 });
+
+Route::post('/order', 'MainController@order')->name('order');
 
 Route::get('/{category}/{service}', 'MainController@service')->name('service');
 Route::get('/{slug}', 'MainController@category')->name('category');

@@ -52,7 +52,7 @@
 </head>
 <body>
 
-<header class="">
+<header class="@if(Route::currentRouteName()!="index") sections_header @endif">
 
     <nav class="main-nav notresponsive-nav">
         <div class="container">
@@ -67,10 +67,10 @@
                     </a> <!-- #logo -->
                     <ul class="main-ul pl-5">
                         <li><a href="{{ route('index') }}" class="hvr-underline-reveal anim link">Главная</a></li>
-                        <li><a href="#section02" class="hvr-underline-reveal anim link">О хирурге</a></li>
-                        <li><a href="#section04" class="hvr-underline-reveal anim link">Документы</a></li>
+                        <li><a href="{{ route('about') }}" class="hvr-underline-reveal anim link">О хирурге</a></li>
+                        <li><a href="{{ route('document') }}" class="hvr-underline-reveal anim link">Документы</a></li>
                         <li><a href="{{ route('categories') }}" class="hvr-underline-reveal anim link">Услуги</a></li>
-                        <li><a href="#section00" class="hvr-underline-reveal anim link">Контакты</a></li>
+                        <li><a href="{{ route('contact') }}" class="hvr-underline-reveal anim link">Контакты</a></li>
 
                         <!-- Modal -->
                     </ul> <!-- main-ul -->
@@ -115,11 +115,11 @@
 
 
                 <ul class="main-ul">
-                    <li><a href="#section01" class="hvr-underline-reveal anim link">Главная</a></li>
-                    <li><a href="#section02" class="hvr-underline-reveal anim link">О хирурге</a></li>
-                    <li><a href="#section04" class="hvr-underline-reveal anim link">Документы</a></li>
-                    <li><a href="#section00" class="hvr-underline-reveal anim link">Услуги</a></li>
-                    <li><a href="#section00" class="hvr-underline-reveal anim link">Контакты</a></li>
+                    <li><a href="{{ route('index') }}" class="hvr-underline-reveal anim link">Главная</a></li>
+                    <li><a href="{{ route('about') }}" class="hvr-underline-reveal anim link">О хирурге</a></li>
+                    <li><a href="{{ route('document') }}" class="hvr-underline-reveal anim link">Документы</a></li>
+                    <li><a href="{{ route('categories') }}" class="hvr-underline-reveal anim link">Услуги</a></li>
+                    <li><a href="{{ route('contact') }}" class="hvr-underline-reveal anim link">Контакты</a></li>
 
                     <!-- Modal -->
                 </ul> <!-- main-ul -->
@@ -160,31 +160,32 @@
 
 </footer> <!-- footer -->
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-
-            <div class="mybox position-relative mt-0">
+            <div class="mybox position-relative mt-0" >
                 <button type="button" class="close myclose" data-dismiss="modal" aria-label="Close">
-                    <img src="{{ asset('front/images/close.png') }}" class="img-width" alt="">
+                    <img src="https://dr-asror.uz/images/close.png" class="img-width" alt="">
                 </button>
+
                 <h2 class="section_title mybox_title">
                     Записаться на прием
-                </h2> <!-- section_title -->
+                </h2>
 
-                <form action="" class="mybox_form">
-                    <input type="text" required="" placeholder="Введите ваше имя">
-                    <input type="text" required="" placeholder="Введите ваш номер телефона">
-                    <input type="text" required="" placeholder="Введите ваш e-mail">
+                <form method="POST" action="{{ route('order') }}" class="mybox_form" method="POST">
+                    @csrf
+                    <input type="text" name="name" placeholder="Имя" required>
+                    <input type="tel" name="phone" placeholder="Номер телефона"  required>
+
+
                     <div class="text-center mt-4">
-                        <button type="submit" class="mybtn px-6">Отправить</button>
+                        <button type="submit" class="mybtn px-6">
+                            Отправить
+                        </button>
                     </div>
-
-                </form> <!-- mybox_form -->
-
-            </div> <!-- mybox -->
-        </div> <!-- modal_content -->
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

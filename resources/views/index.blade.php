@@ -17,9 +17,8 @@
                                 Быть красивой просто!
                             </h3> <!-- subtitle -->
                             <div class="header_btn">
-                                <a href="#" class="mybtn" data-toggle="modal" data-target="#exampleModalCenter">Записаться
+                                <a href="#" class="mybtn" data-toggle="modal" data-target="#modal">Записаться
                                     на прием</a>
-
                             </div> <!-- header_btn -->
 
                         </div> <!-- col-md-6 -->
@@ -56,7 +55,7 @@
                                 уже сегодня!
                             </p> <!-- subtitle -->
                             <div class="header_btn">
-                                <a href="#" class="mybtn" data-toggle="modal" data-target="#exampleModalCenter">Записаться
+                                <a href="#" class="mybtn" data-toggle="modal" data-target="#modal">Записаться
                                     на прием</a>
                             </div> <!-- header_btn -->
 
@@ -87,14 +86,14 @@
                                     Записаться на прием
                                 </h2> <!-- section_title -->
 
-                                <form action="" class="mybox_form">
-                                    <input type="text" required="" placeholder="Введите ваше имя">
-                                    <input type="text" required="" placeholder="Введите ваш номер телефона">
-                                    <input type="text" required="" placeholder="Введите ваш e-mail">
+                                <form action="{{ route('order') }}" class="mybox_form" method="POST">
+                                    <input type="text" required="" name="name" placeholder="Введите ваше имя">
+                                    <input type="text" required="" name="phone" placeholder="Введите ваш номер телефона">
+                                    <input type="text" required="" name="email" placeholder="Введите ваш e-mail">
                                     <div class="text-center mt-4">
                                         <button type="submit" class="mybtn px-6">Отправить</button>
                                     </div>
-
+                                    @csrf
                                 </form> <!-- mybox_form -->
 
                             </div> <!-- mybox -->
@@ -133,13 +132,17 @@
                 <div class="col-md-5">
                     <img src="{{ asset('front/images/docAsror.png') }}" class="img-width px-5" alt="">
                     <div class="givequestion">
-                        <h5>Задать вопрос хирургу можно напрямую</h5>
-                        <form action="" class="doc_form">
-                            <input type="text" required="" id="phone_input"
-                                   placeholder="+998 (    )       -     -       ">
-                            <button type="submit">Оставить заявку</button>
+                        <h5>
+                            Задать вопрос хирургу можно  напрямую
+                        </h5>
+                        <form method="POST" action="{{ route('order') }}" class="doc_form" method="POST">
+                            @csrf
+                            <a id="phone" class="myclickphone" style="color: white" href="tel:+998974209006">+998 (97) 420-90-06</a>
+                            <button type="button" data-toggle="modal" data-target="#modal">
+                                Оставить заявку
+                            </button>
                         </form>
-                    </div> <!-- givequestion -->
+                    </div>
                 </div> <!-- col-md-5 -->
 
                 <div class="col-md-1">
@@ -488,18 +491,18 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="" class="main_form">
+                    <form action="{{ route('order') }}" class="main_form" method="POST">
                         <div class="d-flex justify-content-between res_column">
-                            <input type="text" placeholder="Ваше имя" required="">
-                            <input type="text" placeholder="Эл. почта" required="">
-                            <input type="text" placeholder="Номер телефона" required="">
+                            <input type="text" name="name" placeholder="Ваше имя" required="">
+                            <input type="text" name="email" placeholder="Эл. почта" required="">
+                            <input type="text" name="phone" placeholder="Номер телефона" required="">
                         </div> <!-- d-flex -->
                         <div class="text-center mt-5">
                             <button type="submit" class="mybtn px-6">
                                 Отправить
                             </button>
                         </div> <!-- text-center -->
-
+                        @csrf
                     </form> <!-- main_form -->
                 </div> <!-- col-md-10 -->
             </div> <!-- row -->

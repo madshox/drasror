@@ -205,7 +205,7 @@ $(function () {
 // })();
 // var isTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
 
-// Hide controls if isTouch is true 
+// Hide controls if isTouch is true
 // $('#lightgallery').lightGallery({
 // 	controls: isTouch ? false : true
 // });
