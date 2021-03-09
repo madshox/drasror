@@ -58,6 +58,9 @@
                                             </div>
 
                                             <div class="col-12" style="margin-top: 30px">
+                                                @error('icon')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <div class="text-bold-600 font-medium-2 mb-1">
                                                     Иконка
                                                 </div>

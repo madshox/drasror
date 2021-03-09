@@ -33,7 +33,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-sm-6 col-12">
-                                                @error('name')
+                                                @error('title')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                                 <div class="text-bold-600 font-medium-2 mb-1">
@@ -52,6 +52,9 @@
 
                                             <!--CK-editor-->
                                             <div class="col-12">
+                                                @error('description')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <div class="text-bold-600 font-medium-2 mb-1">
                                                     Описание
                                                 </div>
@@ -62,6 +65,9 @@
 
                                             <!--CK-editor-->
                                             <div class="col-12 mt-2">
+                                                @error('long_d')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <div class="text-bold-600 font-medium-2 mb-1">
                                                     Длинное описание
                                                 </div>
@@ -71,6 +77,9 @@
                                             <!--end-CK-editor-->
 
                                             <div class="col-12" style="margin-top: 30px">
+                                                @error('head_image')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <div class="text-bold-600 font-medium-2 mb-1">
                                                     Главная картинка
                                                 </div>
