@@ -19,7 +19,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
+        $services = Service::get();
         return view('dashboard.services.index', compact('services'));
     }
 
@@ -30,7 +30,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::get();
         return view('dashboard.services.form', compact('categories'));
     }
 
@@ -45,7 +45,7 @@ class ServiceController extends Controller
         $head_image = $request->file('head_image');
         $head_image_name = time(). '-' . $head_image->getClientOriginalName();
 
-        $path = $request->file('head_image')->storeAs('service_head_image', $head_image_name);
+        $path = $request->file('head_image')->storeAs('public/service_head_image', $head_image_name);
         $params = $request->all();
         $params['head_image'] = $path;
         $params['slug'] = SlugService::createSlug(Service::class, 'slug', $request->title);
@@ -83,8 +83,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        $categories = Category::all();
-        $services = Service::all()->find($service);
+        $categories = Category::get();
+        $services = Service::get()->find($service);
         return view('dashboard.services.form', compact('services', 'categories'));
     }
 
@@ -97,26 +97,6 @@ class ServiceController extends Controller
      */
     public function update(ServiceRequest $request, Service $service)
     {
-        foreach ($service->images as $image){
-            if (!collect($request['preloaded'])->contains($image->id)){
-                try {
-                    Storage::delete($image->image);
-                }catch (\Exception $e){}
-                $image->delete();
-            }
-        }
-
-        if($request->hasFile('images')) {
-            $files = $request->file('images');
-            foreach ($files as $file) {
-                $name = time(). '-' . $file->getClientOriginalName();
-                $name = str_replace(' ', '-', $name);
-
-                $file->move('storage/images', $name);
-                $service->images()->create(['image' => 'images' . '/' . $name]);
-            }
-        }
-
         if ($request->hasFile('head_image')) {
             Storage::delete($service->head_image);
             $head_image = $request->file('head_image');
@@ -140,9 +120,6 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        foreach ($service->images as $image) {
-            Storage::delete($image['image']);
-        }
         Storage::delete($service->head_image);
         $service->delete();
         return redirect()->route('services.index')->with('danger', 'Услуга успешно удалена');

@@ -4,22 +4,22 @@ namespace App;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Service extends Model
+class Subcategory extends Model
 {
     use Sluggable;
 
     protected $guarded = [
-      'id'
+        'id'
     ];
 
-    public function category() {
-        return $this->belongsTo(Category::class);
+    public function images()
+    {
+        return $this->hasMany(ImagesSubcategory::class);
     }
 
-    public function subcategories() {
-        return $this->hasMany(Subcategory::class);
+    public function service() {
+        return $this->belongsTo(Service::class);
     }
 
     public function sluggable() {

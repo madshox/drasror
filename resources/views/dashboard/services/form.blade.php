@@ -95,14 +95,6 @@
                                                 </fieldset>
                                             </div>
 
-                                            {{--Multiple image--}}
-                                            @isset($services)
-                                                <div class="input-images-2 col-12"></div>
-                                            @else
-                                                <div class="input-images col-12"></div>
-                                            @endisset
-                                            <!--End-multiple-image-->
-
                                             <div class="col-12" style="margin-top: 30px">
                                             <select name="category_id" id="category_id" class="form-control">
                                                 @foreach($categories as $category)
@@ -146,17 +138,4 @@
                     </div>
                 </div>
             </section>
-            <script>
-                $('.input-images').imageUploader();
-
-                <?php if(isset($services)) { ?>
-                $('.input-images-2').imageUploader({
-                    preloaded: [
-                            <?php foreach ($services->images as $image) { ?>
-                        { id: {{ $image->id }}, src: '{{ Storage::url($image->image) }}' },
-                        <?php } ?>
-                    ]
-                });
-                <?php } ?>
-            </script>
 @endsection

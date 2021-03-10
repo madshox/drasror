@@ -29,6 +29,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
         Route::resource('categories', 'CategoryController');
         Route::resource('services', 'ServiceController');
+        Route::resource('subcategories', 'SubcategoryController');
     });
 });
 

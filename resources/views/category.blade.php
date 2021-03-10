@@ -31,7 +31,6 @@
                             </a>
                         </div> <!-- d-flex -->
                         <p>{!! $service->description !!}</p>
-
                     </div> <!-- service_box -->
                 </div>
             </div>
