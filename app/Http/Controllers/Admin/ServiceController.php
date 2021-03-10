@@ -42,25 +42,13 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-        $head_image = $request->file('head_image');
-        $head_image_name = time(). '-' . $head_image->getClientOriginalName();
-
-        $path = $request->file('head_image')->storeAs('public/service_head_image', $head_image_name);
+        $path = $request->file('head_image')->store('service_head_image');
         $params = $request->all();
         $params['head_image'] = $path;
         $params['slug'] = SlugService::createSlug(Service::class, 'slug', $request->title);
+
         $service = Service::create($params);
 
-        if($request->hasFile('images')) {
-            $files = $request->file('images');
-            foreach ($files as $file) {
-                $name = time(). '-' . $file->getClientOriginalName();
-                $name = str_replace(' ', '-', $name);
-
-                $file->move('storage/images', $name);
-                $service->images()->create(['image' => 'images' . '/' . $name]);
-            }
-        }
         return redirect()->route('services.index')->with('success', 'Услуга успешно добавлена');
     }
 
@@ -75,42 +63,41 @@ class ServiceController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Service $service)
-    {
-        $categories = Category::get();
-        $services = Service::get()->find($service);
-        return view('dashboard.services.form', compact('services', 'categories'));
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function update(ServiceRequest $request, Service $service)
+    public function edit(Service $service, ServiceRequest $request)
     {
+        if ($request->isMethod('get')) {
+            $categories = Category::get();
+            $services = Service::get()->find($service);
+            return view('dashboard.services.form', compact('services', 'categories'));
+        }
+
         if ($request->hasFile('head_image')) {
             Storage::delete($service->head_image);
-            $head_image = $request->file('head_image');
-            $head_image_name = time(). '-' . $head_image->getClientOriginalName();
-            $path = $request->file('head_image')->storeAs('service_head_image', $head_image_name);
+
+            $path = $request->file('head_image')->store('service_head_image');
         } else {
             $path = $service->head_image;
         }
+
         $params = $request->all();
         $params['head_image'] = $path;
         $service->update($params);
 
         return redirect()->route('services.index')->with('warning', 'Услуга успешно отредактирована');
     }
+
+//    /**
+//     * Update the specified resource in storage.
+//     *
+//     * @param  \Illuminate\Http\Request  $request
+//     * @param  \App\Service  $service
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function update(ServiceRequest $request, Service $service)
+//    {
+//
+//    }
 
     /**
      * Remove the specified resource from storage.

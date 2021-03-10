@@ -6,7 +6,6 @@
     @section('title', 'Создать подкатегорию')
 @endisset
 
-
 @section('content')
             <section id="input-with-icons">
                 <div class="row match-height">
@@ -50,6 +49,23 @@
                                                 </fieldset>
                                             </div>
 
+                                            <div class="col-12" style="margin-bottom: 30px">
+                                                <select name="service_id" id="nameid" class="form-control js-example-basic-single">
+                                                   <option></option>
+                                                    @foreach($services as $service)
+                                                        <option value="{{ $service->id }}"
+                                                                @isset($subcategories)
+                                                                @if($subcategories->service_id == $service->id)
+                                                                selected
+                                                            @endif
+                                                            @endisset>
+                                                            {{ $service->title }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+
+                                            </div>
+
                                             {{--Multiple image--}}
                                             @isset($subcategories)
                                                 <div class="input-images-2 col-12"></div>
@@ -57,21 +73,6 @@
                                                 <div class="input-images col-12"></div>
                                             @endisset
                                             <!--End-multiple-image-->
-
-                                            <div class="col-12" style="margin-top: 30px">
-                                            <select name="service_id" id="service_id" class="form-control">
-                                                @foreach($services as $service)
-                                                    <option value="{{ $service->id }}"
-                                                        @isset($subcategories)
-                                                            @if($subcategories->service_id == $service->id)
-                                                                selected
-                                                            @endif
-                                                        @endisset>
-                                                        {{ $service->title }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            </div>
 
                                             <div class="card-body">
                                                 <div class="row" style="display: inline-flex">
@@ -101,6 +102,22 @@
                     </div>
                 </div>
             </section>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#nameid").select2({
+                        placeholder:"search here",
+                        allowClear:true,
+                        matcher: function(term, text) {
+                                return text.toUpperCase().indexOf(term.toUpperCase())==0;
+                        }
+                    });
+                });
+            </script>
+            <script>
+                $(document).ready(function() {
+                    $('.js-example-basic-single').select2();
+                });
+            </script>
             <script>
                 $('.input-images').imageUploader();
 

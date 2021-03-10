@@ -23,6 +23,9 @@ class ServiceRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->isMethod('get'))
+            return [];
+
         return [
             'title' => 'required|min:3',
             'head_image' => 'required',

@@ -59,6 +59,9 @@
     <!-- Image Uploader Js -->
     <script type="text/javascript" src="{{ asset('jquery-image-uploader/dist/image-uploader.min.js') }}"></script>
 
+    {{--Select2--}}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.css">
+
 </head>
 <!-- END: Head-->
 
@@ -237,13 +240,13 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" navigation-header"><span>Apps</span>
             </li>
-            <li class=" nav-item"><a href="{{ route('categories.index') }}"><i class="feather icon-mail"></i><span
+            <li class="nav-item @if(Route::is('categories.index')) active @endif"><a href="{{ route('categories.index') }}"><i class="feather icon-mail"></i><span
                         class="menu-title" data-i18n="Email">Категории</span></a>
             </li>
-            <li class=" nav-item"><a href="{{ route('services.index') }}"><i class="feather icon-message-square"></i><span
+            <li class="nav-item @if(Route::is('services.index')) active @endif"><a href="{{ route('services.index') }}"><i class="feather icon-message-square"></i><span
                         class="menu-title" data-i18n="Chat">Услуги</span></a>
             </li>
-            <li class=" nav-item"><a href="{{ route('subcategories.index') }}"><i class="feather icon-check-square"></i><span
+            <li class="nav-item @if(Route::is('subcategories.index')) active @endif"><a href="{{ route('subcategories.index') }}"><i class="feather icon-check-square"></i><span
                         class="menu-title" data-i18n="Todo">Подкатегории</span></a>
             </li>
 {{--            <li class=" nav-item"><a href="app-calender.html"><i class="feather icon-calendar"></i><span--}}
@@ -410,6 +413,9 @@
 
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
+
+{{--Select2--}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.js"></script>
 
 <!--Ck-editor-->
 <script>

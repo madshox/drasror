@@ -13,7 +13,7 @@ class CreateImagesSubcategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('images_subcategory', function (Blueprint $table) {
+        Schema::create('images_subcategories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subcategory_id')->constrained('subcategories')
                 ->onDelete('cascade')->onUpdate('cascade');
@@ -29,6 +29,6 @@ class CreateImagesSubcategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images_subcategory');
+        Schema::dropIfExists('images_subcategories');
     }
 }

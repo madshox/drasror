@@ -27,7 +27,7 @@
                                             <tr>
                                                 <th scope="row">{{ $subcategory->id }}</th>
                                                 <td>{{ $subcategory->title }}</td>
-                                                <td>{{ $subcategory->service->title }}</td>
+                                                <td>{{ optional($subcategory->service)->title }}</td>
                                                 <td style="display: flex; justify-content: center;">
                                                     <form action="{{ route('subcategories.destroy', $subcategory) }}" method="POST">
                                                         <a href="{{ route('subcategories.edit', $subcategory) }}"><button type="button" class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light">
