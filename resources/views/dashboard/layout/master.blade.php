@@ -243,13 +243,13 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" navigation-header"><span>Apps</span>
             </li>
-            <li class=" nav-item"><a href="{{ route('categories.index') }}"><i class="feather icon-mail"></i><span
+            <li class="nav-item @if(Route::current()->getName() == ('categories.index')) active @endif"><a href="{{ route('categories.index') }}"><i class="feather icon-mail"></i><span
                         class="menu-title" data-i18n="Email">Категории</span></a>
             </li>
-            <li class=" nav-item"><a href="{{ route('services.index') }}"><i class="feather icon-message-square"></i><span
+            <li class="nav-item @if(Route::current()->getName() == ('services.index')) active @endif"><a href="{{ route('services.index') }}"><i class="feather icon-message-square"></i><span
                         class="menu-title" data-i18n="Chat">Услуги</span></a>
             </li>
-            <li class=" nav-item"><a href="{{ route('subcategories.index') }}"><i class="feather icon-check-square"></i><span
+            <li class="nav-item @if(Route::current()->getName() == ('subcategories.index')) active @endif"><a href="{{ route('subcategories.index') }}"><i class="feather icon-check-square"></i><span
                         class="menu-title" data-i18n="Todo">Подкатегории</span></a>
             </li>
 {{--            <li class=" nav-item"><a href="app-calender.html"><i class="feather icon-calendar"></i><span--}}

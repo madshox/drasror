@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SubcategoryRequest;
 use App\Service;
 use App\Subcategory;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -41,7 +42,7 @@ class SubcategoryController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubcategoryRequest $request)
     {
         $params = $request->all();
         $params['slug'] = SlugService::createSlug(Service::class, 'slug', $request->title);
@@ -91,7 +92,7 @@ class SubcategoryController extends Controller
      * @param \App\Subcategory $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subcategory $subcategory)
+    public function update(SubcategoryRequest $request, Subcategory $subcategory)
     {
         foreach ($subcategory->images as $image) {
             if (!collect($request['preloaded'])->contains($image->id)) {
