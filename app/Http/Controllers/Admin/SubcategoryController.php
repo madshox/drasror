@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Service;
 use App\Subcategory;
@@ -29,8 +30,9 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
+        $categories = Category::get();
         $services = Service::get();
-        return view('dashboard.subcategories.form', compact('services'));
+        return view('dashboard.subcategories.form', compact('services', 'categories'));
     }
 
     /**

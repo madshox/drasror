@@ -1,16 +1,18 @@
 @extends('layouts.master')
 
 @section('swiper')
+    @foreach($category->services as $service)
     <div class="container pt-6">
-        <h1 class="sections_title">Лицо</h1>
+        <h1 class="sections_title">{{ $service->category->name }}</h1>
         <div class="d-flex mybread_cump align-items-center">
             <a href="{{ route('index') }}" class="hvr-underline-reveal">Главная</a>
             <i class="fa fa-angle-right"></i>
             <a href="{{ route('categories') }}" class="hvr-underline-reveal">Услуги</a>
             <i class="fa fa-angle-right"></i>
-            <a href="#" class="hvr-underline-reveal">Лицо</a>
+            <a href="#" class="hvr-underline-reveal">{{ $service->category->name }}</a>
         </div>
     </div>
+    @endforeach
 @endsection
 
 @section('content')

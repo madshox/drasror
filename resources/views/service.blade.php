@@ -2,13 +2,13 @@
 
 @section('swiper')
     <div class="container pt-6">
-        <h1 class="sections_title">Лицо</h1>
+        <h1 class="sections_title">{{ $services->title }}</h1>
         <div class="d-flex mybread_cump align-items-center">
             <a href="{{ route('index') }}" class="hvr-underline-reveal">Главная</a>
             <i class="fa fa-angle-right"></i>
             <a href="{{ route('categories') }}" class="hvr-underline-reveal">Услуги</a>
             <i class="fa fa-angle-right"></i>
-{{--            <a href="{{ route('service', [$services->category, $services->slug]) }}" class="hvr-underline-reveal">{{ $services->title }}</a>--}}
+            <a href="#" class="hvr-underline-reveal">{{ $services->title }}</a>
         </div>
     </div>
 @endsection
@@ -22,8 +22,7 @@
                     @foreach($subcategory->images as $sub)
                 <div class="col-lg-6 mt-2">
                     <div class="h-100 patients--img">
-                        <img src="{{ Storage::url($sub->image) }}"
-                             alt="">
+                        <img src="{{ Storage::url($sub->image) }}" alt="{{ $sub->title }}">
                     </div>
                     <div class="img-titles">
                         <div>До операции</div>

@@ -20,7 +20,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::get();
         return view('dashboard.categories.index', compact('categories'));
     }
 
@@ -31,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::get();
         return view('dashboard.categories.form', compact('categories'));
     }
 
@@ -70,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $categories = Category::all();
+        $categories = Category::get();
         return view('dashboard.categories.form', compact('categories', 'category'));
     }
 
