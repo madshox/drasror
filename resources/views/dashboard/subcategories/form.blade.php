@@ -59,7 +59,8 @@
                                             <!--End-multiple-image-->
 
                                             <div class="col-12" style="margin-top: 30px">
-                                            <select name="service_id" id="service_id" class="form-control">
+                                            <select name="service_id" id="servid" class="form-control">
+{{--                                                <option></option>--}}
                                                 @foreach($services as $service)
                                                     <option value="{{ $service->id }}"
                                                         @isset($subcategories)
@@ -101,6 +102,11 @@
                     </div>
                 </div>
             </section>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#servid').select2();
+                })
+            </script>
             <script>
                 $('.input-images').imageUploader();
 

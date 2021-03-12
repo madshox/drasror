@@ -51,6 +51,10 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    {{--Select2--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js" defer></script>
+
     <!--Material Design Iconic Font-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -58,6 +62,8 @@
     <link rel="stylesheet" href="{{ asset('jquery-image-uploader/dist/image-uploader.min.css') }}">
     <!-- Image Uploader Js -->
     <script type="text/javascript" src="{{ asset('jquery-image-uploader/dist/image-uploader.min.js') }}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css">
 
 </head>
 <!-- END: Head-->

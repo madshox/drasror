@@ -96,7 +96,7 @@
                                             </div>
 
                                             <div class="col-12" style="margin-top: 30px">
-                                            <select name="category_id" id="category_id" class="form-control">
+                                            <select name="category_id" id="catid" class="form-control">
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->id }}"
                                                         @isset($services)
@@ -138,4 +138,9 @@
                     </div>
                 </div>
             </section>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#catid').select2();
+                })
+            </script>
 @endsection
